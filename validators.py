@@ -10,4 +10,4 @@ def validate_is_profane(value):
 
 def validate_is_profane_nospace(value):
     if pf.is_profane_nospace(value) is True:
-        raise ValidationError('Please remove any profanity/swear words.')
+        raise ValidationError('Please remove any profanity/swear words from the string.')

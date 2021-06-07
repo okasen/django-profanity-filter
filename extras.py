@@ -113,9 +113,10 @@ class ProfanityFilter:
         bad_words = self.get_profane_words()
         false_positives = self.get_false_positives()
         profanity_count = 0
+        input_text_lowered = input_text.lower()
 
         for word in bad_words:
-            if re.search(word, input_text):
+            if re.search(word, input_text_lowered):
                 profanity_count = profanity_count + 1
 
         for word in false_positives:
