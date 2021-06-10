@@ -54,7 +54,15 @@ from profanity.validators import validate_is_profane
 class Post(models.Model):
     post = models.TextArea(max_length=150, validators=[validate_is_profane])
 ```
+You can also now validate text within unbroken strings, i.e. strings with no spaces in them (stringswithnospacesinthem). To do so, use the validate_is_profane_nospace validator as shown below:
 
+```python
+from profanity.validators import validate_is_profane_nospace
+
+class Post(models.Model):
+    post = models.TextArea(max_length=150, validators=[validate_is_profane_nospace])
+```
+Because there are sometimes profane words nested within safe words (e.g. semen in basement), this validator also uses a "good list" of words that will trigger false positives. If you notice that a word is being blocked from use due to it triggering a false positive, simply add the word to goodlist.txt
 
 ## TODO
 ### Template Tags
@@ -65,4 +73,6 @@ class Post(models.Model):
     
 ### Validators
 - [x] Basic Censorship Validator
+- [x] Nospace Profanity Validator (for usernames and other unbroken strings)
+- [ ] Advanced validator - perhaps with the ability to find common morphs of words 
     
